@@ -5,7 +5,7 @@ import axios from "axios";
 
 export const compile = (info) => dispatch => {
     console.log("compile called");
-    axios.post('/api/compile',info) 
+    axios.post('https://fantasybballcalculator.herokuapp.com/api/compile',info) 
      .then(res => {
         dispatch({
            type: COMPILE,
