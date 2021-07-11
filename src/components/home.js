@@ -706,7 +706,7 @@ class Home extends Component {
           <ToggleButtonGroup type="radio" name="options" defaultValue="" onChange={this.togglear.bind(this)}>
             <ToggleButton value={this.state.tar?"":"ratings"} style={{padding: "5px",border: "black 1px solid"}}>{this.state.tar?"Toggle: Ratings":"Toggle: Avg"}</ToggleButton>
           </ToggleButtonGroup>
-          :<h5>No compiled data or loading...</h5>
+          :<h5>No data at the moment. Head over to the compile section to load your leagues info. Data might take some time to load</h5>
         }
         
 
@@ -873,7 +873,7 @@ class Home extends Component {
                   pagination={ paginationFactory() }
                   filter={ filterFactory() }
                   />
-                  :<h5>loading or no compiled data</h5>
+                  :<h5>loading or no compiled data. </h5>
                 }
             </div>
             <div className={this.state.pos !== "forwards" ? 'hidden' : ''}>
