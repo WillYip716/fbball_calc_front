@@ -24,18 +24,18 @@ function LeagueCompiler(){
         event.preventDefault(); 
         let arr = [];
         let outarr = [];
-        let reTeam =  new RegExp("(.*)(?=\\nPos)","g");
+        let cleanedtext =  textarea.replace(/\n\s*\n/g, '\n');
+        arr = cleanedtext.split("Pos");
         let rePlayers = new RegExp("(?<=\\n)([a-zA-Z .'-]*)(?=[ ](Atl|Bkn|Bos|Cha|Chi|Cle|Dal|Den|Det|GS|Hou|Ind|LAC|LAL|Mem|Mia|Mil|Min|NO|NY|OKC|Orl|Phi|Pho|Por|SA|Sac|Tor|Uta|Was))","g");
-        arr = textarea.split("\n\n");
-        arr = arr.filter((i) => (i.indexOf("Pos")>-1));
         let ter = false;
+
         
         if(arr.length){
-            for(let i = 0; i < arr.length; i++){              
-                if(arr[i].match(reTeam)[0] && arr[i].match(rePlayers)){
-                    console.log("second level")
+            for(let i = 1; i < arr.length; i++){      
+                let teamnamearr = arr[i-1].split("\n");  
+                if(arr[i].match(rePlayers) && teamnamearr[teamnamearr.length - 2]){
                     outarr.push({
-                        'teamName': arr[i].match(reTeam)[0],
+                        'teamName': teamnamearr[teamnamearr.length - 2],
                         'players': arr[i].match(rePlayers)
                     });
                 }
