@@ -19,6 +19,7 @@ const store = createStore(
    {},
    compose(
       applyMiddleware(...middleware),
+      )
 );
 
 const  persistor = persistStore(store);
