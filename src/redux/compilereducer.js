@@ -1,10 +1,11 @@
-import { COMPILE, GET_ERRORS} from './types';
+import { COMPILE, GET_ERRORS,LOADING} from './types';
 
 const initialState = {
     ratings: [],
     rankings: [],
     avr: [],
-    teams:[]
+    teams:[],
+    process: "initial",
 };
 
 
@@ -17,10 +18,20 @@ const reducer = (state = initialState, action) => {
                 avr: action.payload.avr,
                 rankings: action.payload.rankings,
                 teams: action.payload.teams,
+                process: "initial",
             }
         case GET_ERRORS:
             console.log("errored");
-            return state;
+            return {
+                ...state,
+                process: "error",
+            }
+        case LOADING:
+            console.log("loading");
+            return {
+                ...state,
+                process: "loading",
+            }
         default:
             console.log("defaulted");
             return state;

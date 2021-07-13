@@ -506,7 +506,7 @@ function RecPlayers(props){
                   data={ fits.perfect } 
                   columns={ roa ? rtcolumns : columns}
                   pagination={ paginationFactory() }/>
-                  :<h5>No players are a match for perfect fits</h5>
+                  :<h5 style={{textAlign:"center"}}>No players are a match for perfect fits</h5>
                 }
             </div>
             
@@ -519,7 +519,7 @@ function RecPlayers(props){
                   data={ fits.great } 
                   columns={ roa ? rtcolumns : columns }
                   pagination={ paginationFactory() }/>
-                  :<h5>No players are a match for great fits</h5>
+                  :<h5 style={{textAlign:"center"}}>No players are a match for great fits</h5>
                 }
             </div>
 
@@ -532,7 +532,7 @@ function RecPlayers(props){
                   data={ fits.good } 
                   columns={ roa ? rtcolumns : columns }
                   pagination={ paginationFactory() }/>
-                  :<h5>No players are a match for good fits</h5>
+                  :<h5 style={{textAlign:"center"}}>No players are a match for good fits</h5>
                 }
             </div>
 
@@ -545,9 +545,12 @@ function RecPlayers(props){
                   data={ fits.specialist } 
                   columns={ roa ? rtcolumns : columns }
                   pagination={ paginationFactory() }/>
-                  :<h5>No players are a match for specialist fits</h5>
+                  :<h5 style={{textAlign:"center"}}>No players are a match for specialist fits</h5>
                 }
             </div>
+
+            <br/>
+            <br/>
             
             <h3>Players to trade away</h3>
             <div>

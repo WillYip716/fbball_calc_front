@@ -708,6 +708,9 @@ class Home extends Component {
           </ToggleButtonGroup>
           :<h5>No data at the moment. Head over to the compile section to load your leagues info. Data might take some time to load</h5>
         }
+
+        {(this.props.compilestate === "loading")?<Alert key="loading" variant="primary">Loading...</Alert>:<div/>}
+        {(this.props.compilestate === "error")?<Alert key="errormsg" variant="danger">Request failed</Alert>:<div/>}
         
 
         {this.state.tar !== "ratings" &&  this.state.all.length ?
@@ -920,6 +923,7 @@ const mapStateToProps = state => {
     cratings: state.comp.ratings.centers,
     aratings: state.comp.ratings.all,
     teams: state.comp.teams,
+    compilestate: state.comp.process,
   };
 };
 

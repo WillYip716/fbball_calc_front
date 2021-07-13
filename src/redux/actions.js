@@ -1,10 +1,11 @@
-import { COMPILE, GET_ERRORS} from './types';
+import { COMPILE, GET_ERRORS, LOADING} from './types';
 import axios from "axios";
 
 
 
 export const compile = (info) => dispatch => {
     console.log("compile called");
+    dispatch({type: LOADING});
     axios.post('https://fantasybballcalculator.herokuapp.com/api/compile',info) 
      .then(res => {
         dispatch({

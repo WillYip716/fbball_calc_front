@@ -154,19 +154,6 @@ class Team extends Component {
           text: 'TOV',
           sort: true
         },
-        {
-          text: '',
-          dataField: '',
-          formatter: (cell, row) => {
-            return (    
-              <div>
-                <Button variant="outline-danger" key={row.Player_Name} onClick={() => this.removeplayer(row.Player_Name)}>
-                    X
-                </Button>
-              </div>
-            )
-          }
-        },
       ],
       ratingscolumns: [
         {
