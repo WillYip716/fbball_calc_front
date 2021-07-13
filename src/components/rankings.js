@@ -8,6 +8,63 @@ import { connect } from "react-redux";
 class Rankings extends Component {
   state = {
     toggle: "average",
+    ratcolumns: [
+      {
+        dataField: 'team',
+        text: 'Team Name',
+        sort: true
+      },
+      {
+        dataField: 'PTS',
+        text: 'PTS Rating',
+        sort: true
+      },
+      {
+        dataField: 'FG_PCT',
+        text: 'FG% Rating',
+        sort: true
+      },
+      {
+        dataField: 'FT_PCT',
+        text: 'FT% Rating',
+        sort: true
+      }, 
+      {
+        dataField: 'FG3M',
+        text: '3PTM Rating',
+        sort: true
+      },
+      {
+        dataField: 'REB',
+        text: 'REB Rating',
+        sort: true
+      },
+      {
+        dataField: 'AST',
+        text: 'AST Rating',
+        sort: true
+      },
+      {
+        dataField: 'STL',
+        text: 'STL Rating',
+        sort: true
+      },
+      {
+        dataField: 'BLK',
+        text: 'BLK Rating',
+        sort: true
+      },
+      {
+        dataField: 'TOV',
+        text: 'TOV Rating',
+        sort: true
+      },
+      {
+        dataField: 'rottotal',
+        text: 'Total',
+        sort: true
+      },
+    ],
     rankcolumns: [
       {
         dataField: 'team',
@@ -17,52 +74,112 @@ class Rankings extends Component {
       {
         dataField: 'PTS',
         text: 'PTS RNK',
-        sort: true
+        sort: true,
+        sortFunc: (a, b, order, dataField) => {
+          if (order === 'asc') {
+            return b - a;
+          }
+          return a - b; // desc
+        }
       },
       {
         dataField: 'FG_PCT',
         text: 'FG% RNK',
-        sort: true
+        sort: true,
+        sortFunc: (a, b, order, dataField) => {
+          if (order === 'asc') {
+            return b - a;
+          }
+          return a - b; // desc
+        }
       },
       {
         dataField: 'FT_PCT',
         text: 'FT% RNK',
-        sort: true
+        sort: true,
+        sortFunc: (a, b, order, dataField) => {
+          if (order === 'asc') {
+            return b - a;
+          }
+          return a - b; // desc
+        }
       }, 
       {
         dataField: 'FG3M',
         text: '3PTM RNK',
-        sort: true
+        sort: true,
+        sortFunc: (a, b, order, dataField) => {
+          if (order === 'asc') {
+            return b - a;
+          }
+          return a - b; // desc
+        }
       },
       {
         dataField: 'REB',
         text: 'REB RNK',
-        sort: true
+        sort: true,
+        sortFunc: (a, b, order, dataField) => {
+          if (order === 'asc') {
+            return b - a;
+          }
+          return a - b; // desc
+        }
       },
       {
         dataField: 'AST',
         text: 'AST RNK',
-        sort: true
+        sort: true,
+        sortFunc: (a, b, order, dataField) => {
+          if (order === 'asc') {
+            return b - a;
+          }
+          return a - b; // desc
+        }
       },
       {
         dataField: 'STL',
         text: 'STL RNK',
-        sort: true
+        sort: true,
+        sortFunc: (a, b, order, dataField) => {
+          if (order === 'asc') {
+            return b - a;
+          }
+          return a - b; // desc
+        }
       },
       {
         dataField: 'BLK',
         text: 'BLK RNK',
-        sort: true
+        sort: true,
+        sortFunc: (a, b, order, dataField) => {
+          if (order === 'asc') {
+            return b - a;
+          }
+          return a - b; // desc
+        }
       },
       {
         dataField: 'TOV',
         text: 'TOV RNK',
-        sort: true
+        sort: true,
+        sortFunc: (a, b, order, dataField) => {
+          if (order === 'asc') {
+            return b - a;
+          }
+          return a - b; // desc
+        }
       },
       {
         dataField: 'rottotal',
         text: 'Total',
-        sort: true
+        sort: true,
+        sortFunc: (a, b, order, dataField) => {
+          if (order === 'asc') {
+            return b - a;
+          }
+          return a - b; // desc
+        }
       },
     ],
     columns: [
@@ -156,7 +273,7 @@ class Rankings extends Component {
                 hover
                 keyField='team' 
                 data={ this.props.tr } 
-                columns={ this.state.rankcolumns }/>
+                columns={ this.state.ratcolumns }/>
                 :<h3>nothing yet</h3>
             }   
         </div>
