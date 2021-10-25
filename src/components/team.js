@@ -14,8 +14,10 @@ class Team extends Component {
     state = {
       teamName:"",  
       rosteredplayers:[],
-      guards: [],
-      forwards: [],
+      pguards: [],
+      sguards: [],
+      sforwards: [],
+      pforwards: [],
       centers: [],
       all:[],
       focus:[],
@@ -75,7 +77,7 @@ class Team extends Component {
           sort: true
         },
         {
-          dataField: 'PosStr',
+          dataField: 'Pos',
           text: 'Pos.',
           sort: true
         },
@@ -544,8 +546,10 @@ class Team extends Component {
   
   const mapStateToProps = state => {
     return {
-      gratings: state.comp.ratings.guards,
-      fratings: state.comp.ratings.forwards,
+      pgratings: state.comp.ratings.pguards,
+      sgratings: state.comp.ratings.sguards,
+      sfratings: state.comp.ratings.sforwards,
+      pfratings: state.comp.ratings.pforwards,
       cratings: state.comp.ratings.centers,
       aratings: state.comp.ratings.all,
       teams: state.comp.teams,

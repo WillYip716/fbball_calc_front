@@ -15,8 +15,10 @@ import Alert from 'react-bootstrap/Alert'
 
 class Home extends Component {
   state = {
-    guards: [],
-    forwards: [],
+    pguards: [],
+    sguards: [],
+    sforwards: [],
+    pforwards: [],
     centers: [],
     all: [],
     avglist:[],
@@ -41,7 +43,7 @@ class Home extends Component {
         filter: textFilter()
       },
       {
-        dataField: 'PosStr',
+        dataField: 'Pos',
         text: 'Pos.',
         sort: true
       },
@@ -129,7 +131,7 @@ class Home extends Component {
         filter: textFilter()
       },
       {
-        dataField: 'PosStr',
+        dataField: 'Pos',
         text: 'Pos.',
         sort: true
       },
@@ -206,7 +208,7 @@ class Home extends Component {
         filter: textFilter()
       },
       {
-        dataField: 'PosStr',
+        dataField: 'Pos',
         text: 'Pos.',
         sort: true
       },
@@ -279,14 +281,18 @@ class Home extends Component {
 
   componentDidMount() {
     if(this.props.aratings){
-      const updatedg = this.props.gratings.slice().map(obj=>(Object.assign(obj, { TotalRatingEdited: this.filTotal(obj)}))).sort((a,b) => (a.TotalRatingEdited > b.TotalRatingEdited) ? -1 : ((b.TotalRatingEdited > a.TotalRatingEdited) ? 1 : 0));
-      const updatedf = this.props.fratings.slice().map(obj=>(Object.assign(obj, { TotalRatingEdited: this.filTotal(obj)}))).sort((a,b) => (a.TotalRatingEdited > b.TotalRatingEdited) ? -1 : ((b.TotalRatingEdited > a.TotalRatingEdited) ? 1 : 0));
+      const updatedpg = this.props.pgratings.slice().map(obj=>(Object.assign(obj, { TotalRatingEdited: this.filTotal(obj)}))).sort((a,b) => (a.TotalRatingEdited > b.TotalRatingEdited) ? -1 : ((b.TotalRatingEdited > a.TotalRatingEdited) ? 1 : 0));
+      const updatedsg = this.props.sgratings.slice().map(obj=>(Object.assign(obj, { TotalRatingEdited: this.filTotal(obj)}))).sort((a,b) => (a.TotalRatingEdited > b.TotalRatingEdited) ? -1 : ((b.TotalRatingEdited > a.TotalRatingEdited) ? 1 : 0));
+      const updatedsf = this.props.sfratings.slice().map(obj=>(Object.assign(obj, { TotalRatingEdited: this.filTotal(obj)}))).sort((a,b) => (a.TotalRatingEdited > b.TotalRatingEdited) ? -1 : ((b.TotalRatingEdited > a.TotalRatingEdited) ? 1 : 0));
+      const updatedpf = this.props.pfratings.slice().map(obj=>(Object.assign(obj, { TotalRatingEdited: this.filTotal(obj)}))).sort((a,b) => (a.TotalRatingEdited > b.TotalRatingEdited) ? -1 : ((b.TotalRatingEdited > a.TotalRatingEdited) ? 1 : 0));
       const updatedc = this.props.cratings.slice().map(obj=>(Object.assign(obj, { TotalRatingEdited: this.filTotal(obj)}))).sort((a,b) => (a.TotalRatingEdited > b.TotalRatingEdited) ? -1 : ((b.TotalRatingEdited > a.TotalRatingEdited) ? 1 : 0));
       const updateda = this.props.aratings.slice().map(obj=>(Object.assign(obj, { TotalRatingEdited: this.filTotal(obj)}))).sort((a,b) => (a.TotalRatingEdited > b.TotalRatingEdited) ? -1 : ((b.TotalRatingEdited > a.TotalRatingEdited) ? 1 : 0));
       const avg = this.props.aratings.slice().sort((a,b) => (a.TotalRating > b.TotalRating) ? -1 : ((b.TotalRating > a.TotalRating) ? 1 : 0));
       this.setState({
-          guards: updatedg,
-          forwards: updatedf,
+          pguards: updatedpg,
+          sguards: updatedsg,
+          sforwards: updatedsf,
+          pforwards: updatedpf,
           centers: updatedc,
           all: updateda,
           avglist: avg,
@@ -297,14 +303,18 @@ class Home extends Component {
   componentDidUpdate(prevProps){
     if(prevProps.aratings !== this.props.aratings){
       if(this.props.aratings.length){
-        const updatedg = this.props.gratings.slice().map(obj=>(Object.assign(obj, { TotalRatingEdited: this.filTotal(obj)}))).sort((a,b) => (a.TotalRatingEdited > b.TotalRatingEdited) ? -1 : ((b.TotalRatingEdited > a.TotalRatingEdited) ? 1 : 0));
-        const updatedf = this.props.fratings.slice().map(obj=>(Object.assign(obj, { TotalRatingEdited: this.filTotal(obj)}))).sort((a,b) => (a.TotalRatingEdited > b.TotalRatingEdited) ? -1 : ((b.TotalRatingEdited > a.TotalRatingEdited) ? 1 : 0));
+        const updatedpg = this.props.pgratings.slice().map(obj=>(Object.assign(obj, { TotalRatingEdited: this.filTotal(obj)}))).sort((a,b) => (a.TotalRatingEdited > b.TotalRatingEdited) ? -1 : ((b.TotalRatingEdited > a.TotalRatingEdited) ? 1 : 0));
+        const updatedsg = this.props.sgratings.slice().map(obj=>(Object.assign(obj, { TotalRatingEdited: this.filTotal(obj)}))).sort((a,b) => (a.TotalRatingEdited > b.TotalRatingEdited) ? -1 : ((b.TotalRatingEdited > a.TotalRatingEdited) ? 1 : 0));
+        const updatedsf = this.props.sfratings.slice().map(obj=>(Object.assign(obj, { TotalRatingEdited: this.filTotal(obj)}))).sort((a,b) => (a.TotalRatingEdited > b.TotalRatingEdited) ? -1 : ((b.TotalRatingEdited > a.TotalRatingEdited) ? 1 : 0));
+        const updatedpf = this.props.pfratings.slice().map(obj=>(Object.assign(obj, { TotalRatingEdited: this.filTotal(obj)}))).sort((a,b) => (a.TotalRatingEdited > b.TotalRatingEdited) ? -1 : ((b.TotalRatingEdited > a.TotalRatingEdited) ? 1 : 0));
         const updatedc = this.props.cratings.slice().map(obj=>(Object.assign(obj, { TotalRatingEdited: this.filTotal(obj)}))).sort((a,b) => (a.TotalRatingEdited > b.TotalRatingEdited) ? -1 : ((b.TotalRatingEdited > a.TotalRatingEdited) ? 1 : 0));
         const updateda = this.props.aratings.slice().map(obj=>(Object.assign(obj, { TotalRatingEdited: this.filTotal(obj)}))).sort((a,b) => (a.TotalRatingEdited > b.TotalRatingEdited) ? -1 : ((b.TotalRatingEdited > a.TotalRatingEdited) ? 1 : 0));
         const avg = this.props.aratings.slice().sort((a,b) => (a.TotalRating > b.TotalRating) ? -1 : ((b.TotalRating > a.TotalRating) ? 1 : 0));
         this.setState({
-            guards: updatedg,
-            forwards: updatedf,
+            pguards: updatedpg,
+            sguards: updatedsg,
+            sforwards: updatedsf,
+            pforwards: updatedpf,
             centers: updatedc,
             all: updateda,
             avglist: avg,
@@ -336,14 +346,18 @@ class Home extends Component {
 
   togglear(val) {
     if(this.props.aratings){
-      const updatedg = this.props.gratings.slice().map(obj=>(Object.assign(obj, { TotalRatingEdited: this.filTotal(obj)}))).sort((a,b) => (a.TotalRatingEdited > b.TotalRatingEdited) ? -1 : ((b.TotalRatingEdited > a.TotalRatingEdited) ? 1 : 0));
-      const updatedf = this.props.fratings.slice().map(obj=>(Object.assign(obj, { TotalRatingEdited: this.filTotal(obj)}))).sort((a,b) => (a.TotalRatingEdited > b.TotalRatingEdited) ? -1 : ((b.TotalRatingEdited > a.TotalRatingEdited) ? 1 : 0));
+      const updatedpg = this.props.pgratings.slice().map(obj=>(Object.assign(obj, { TotalRatingEdited: this.filTotal(obj)}))).sort((a,b) => (a.TotalRatingEdited > b.TotalRatingEdited) ? -1 : ((b.TotalRatingEdited > a.TotalRatingEdited) ? 1 : 0));
+      const updatedsg = this.props.sgratings.slice().map(obj=>(Object.assign(obj, { TotalRatingEdited: this.filTotal(obj)}))).sort((a,b) => (a.TotalRatingEdited > b.TotalRatingEdited) ? -1 : ((b.TotalRatingEdited > a.TotalRatingEdited) ? 1 : 0));
+      const updatedsf = this.props.sfratings.slice().map(obj=>(Object.assign(obj, { TotalRatingEdited: this.filTotal(obj)}))).sort((a,b) => (a.TotalRatingEdited > b.TotalRatingEdited) ? -1 : ((b.TotalRatingEdited > a.TotalRatingEdited) ? 1 : 0));
+      const updatedpf = this.props.pfratings.slice().map(obj=>(Object.assign(obj, { TotalRatingEdited: this.filTotal(obj)}))).sort((a,b) => (a.TotalRatingEdited > b.TotalRatingEdited) ? -1 : ((b.TotalRatingEdited > a.TotalRatingEdited) ? 1 : 0));
       const updatedc = this.props.cratings.slice().map(obj=>(Object.assign(obj, { TotalRatingEdited: this.filTotal(obj)}))).sort((a,b) => (a.TotalRatingEdited > b.TotalRatingEdited) ? -1 : ((b.TotalRatingEdited > a.TotalRatingEdited) ? 1 : 0));
       const updateda = this.props.aratings.slice().map(obj=>(Object.assign(obj, { TotalRatingEdited: this.filTotal(obj)}))).sort((a,b) => (a.TotalRatingEdited > b.TotalRatingEdited) ? -1 : ((b.TotalRatingEdited > a.TotalRatingEdited) ? 1 : 0));
       const avg = this.props.aratings.slice().sort((a,b) => (a.TotalRating > b.TotalRating) ? -1 : ((b.TotalRating > a.TotalRating) ? 1 : 0));
       this.setState({
-          guards: updatedg,
-          forwards: updatedf,
+          pguards: updatedpg,
+          sguards: updatedsg,
+          sforwards: updatedsf,
+          pforwards: updatedpf,
           centers: updatedc,
           all: updateda,
           avglist: avg,
@@ -368,7 +382,7 @@ class Home extends Component {
               filter: textFilter()
             },
             {
-              dataField: 'PosStr',
+              dataField: 'Pos',
               text: 'Pos.',
               sort: true
             },
@@ -456,7 +470,7 @@ class Home extends Component {
               filter: textFilter()
             },
             {
-              dataField: 'PosStr',
+              dataField: 'Pos',
               text: 'Pos.',
               sort: true
             },
@@ -533,7 +547,7 @@ class Home extends Component {
               filter: textFilter()
             },
             {
-              dataField: 'PosStr',
+              dataField: 'Pos',
               text: 'Pos.',
               sort: true
             },
@@ -644,28 +658,36 @@ class Home extends Component {
       if(this.state.av === "available"){
           const rostered = this.props.teams.reduce((a, c) => a.concat(c["players"]),[])
           
-          const updatedg = this.props.gratings.slice().filter(item => !rostered.includes(item.Player_Name)).map(obj=>(Object.assign(obj, { TotalRatingEdited: this.filTotal(obj)}))).sort((a,b) => (a.TotalRatingEdited > b.TotalRatingEdited) ? -1 : ((b.TotalRatingEdited > a.TotalRatingEdited) ? 1 : 0));
-          const updatedf = this.props.fratings.slice().filter(item => !rostered.includes(item.Player_Name)).map(obj=>(Object.assign(obj, { TotalRatingEdited: this.filTotal(obj)}))).sort((a,b) => (a.TotalRatingEdited > b.TotalRatingEdited) ? -1 : ((b.TotalRatingEdited > a.TotalRatingEdited) ? 1 : 0));
+          const updatedpg = this.props.pgratings.slice().filter(item => !rostered.includes(item.Player_Name)).map(obj=>(Object.assign(obj, { TotalRatingEdited: this.filTotal(obj)}))).sort((a,b) => (a.TotalRatingEdited > b.TotalRatingEdited) ? -1 : ((b.TotalRatingEdited > a.TotalRatingEdited) ? 1 : 0));
+          const updatedsg = this.props.sgratings.slice().filter(item => !rostered.includes(item.Player_Name)).map(obj=>(Object.assign(obj, { TotalRatingEdited: this.filTotal(obj)}))).sort((a,b) => (a.TotalRatingEdited > b.TotalRatingEdited) ? -1 : ((b.TotalRatingEdited > a.TotalRatingEdited) ? 1 : 0));
+          const updatedsf = this.props.sfratings.slice().filter(item => !rostered.includes(item.Player_Name)).map(obj=>(Object.assign(obj, { TotalRatingEdited: this.filTotal(obj)}))).sort((a,b) => (a.TotalRatingEdited > b.TotalRatingEdited) ? -1 : ((b.TotalRatingEdited > a.TotalRatingEdited) ? 1 : 0));
+          const updatedpf = this.props.pfratings.slice().filter(item => !rostered.includes(item.Player_Name)).map(obj=>(Object.assign(obj, { TotalRatingEdited: this.filTotal(obj)}))).sort((a,b) => (a.TotalRatingEdited > b.TotalRatingEdited) ? -1 : ((b.TotalRatingEdited > a.TotalRatingEdited) ? 1 : 0));
           const updatedc = this.props.cratings.slice().filter(item => !rostered.includes(item.Player_Name)).map(obj=>(Object.assign(obj, { TotalRatingEdited: this.filTotal(obj)}))).sort((a,b) => (a.TotalRatingEdited > b.TotalRatingEdited) ? -1 : ((b.TotalRatingEdited > a.TotalRatingEdited) ? 1 : 0));
           const updateda = this.props.aratings.slice().filter(item => !rostered.includes(item.Player_Name)).map(obj=>(Object.assign(obj, { TotalRatingEdited: this.filTotal(obj)}))).sort((a,b) => (a.TotalRatingEdited > b.TotalRatingEdited) ? -1 : ((b.TotalRatingEdited > a.TotalRatingEdited) ? 1 : 0));
           
           this.setState({
               columns:newColumn,
-              guards: updatedg,
-              forwards: updatedf,
+              pguards: updatedpg,
+              sguards: updatedsg,
+              sforwards: updatedsf,
+              pforwards: updatedpf,
               centers: updatedc,
               all: updateda,
           });
       }else{
-          const updatedg = this.props.gratings.slice().map(obj=>(Object.assign(obj, { TotalRatingEdited: this.filTotal(obj)}))).sort((a,b) => (a.TotalRatingEdited > b.TotalRatingEdited) ? -1 : ((b.TotalRatingEdited > a.TotalRatingEdited) ? 1 : 0));
-          const updatedf = this.props.fratings.slice().map(obj=>(Object.assign(obj, { TotalRatingEdited: this.filTotal(obj)}))).sort((a,b) => (a.TotalRatingEdited > b.TotalRatingEdited) ? -1 : ((b.TotalRatingEdited > a.TotalRatingEdited) ? 1 : 0));
+          const updatedpg = this.props.pgratings.slice().map(obj=>(Object.assign(obj, { TotalRatingEdited: this.filTotal(obj)}))).sort((a,b) => (a.TotalRatingEdited > b.TotalRatingEdited) ? -1 : ((b.TotalRatingEdited > a.TotalRatingEdited) ? 1 : 0));
+          const updatedsg = this.props.sgratings.slice().map(obj=>(Object.assign(obj, { TotalRatingEdited: this.filTotal(obj)}))).sort((a,b) => (a.TotalRatingEdited > b.TotalRatingEdited) ? -1 : ((b.TotalRatingEdited > a.TotalRatingEdited) ? 1 : 0));
+          const updatedsf = this.props.sfratings.slice().map(obj=>(Object.assign(obj, { TotalRatingEdited: this.filTotal(obj)}))).sort((a,b) => (a.TotalRatingEdited > b.TotalRatingEdited) ? -1 : ((b.TotalRatingEdited > a.TotalRatingEdited) ? 1 : 0));
+          const updatedpf = this.props.pfratings.slice().map(obj=>(Object.assign(obj, { TotalRatingEdited: this.filTotal(obj)}))).sort((a,b) => (a.TotalRatingEdited > b.TotalRatingEdited) ? -1 : ((b.TotalRatingEdited > a.TotalRatingEdited) ? 1 : 0));
           const updatedc = this.props.cratings.slice().map(obj=>(Object.assign(obj, { TotalRatingEdited: this.filTotal(obj)}))).sort((a,b) => (a.TotalRatingEdited > b.TotalRatingEdited) ? -1 : ((b.TotalRatingEdited > a.TotalRatingEdited) ? 1 : 0));
           const updateda = this.props.aratings.slice().map(obj=>(Object.assign(obj, { TotalRatingEdited: this.filTotal(obj)}))).sort((a,b) => (a.TotalRatingEdited > b.TotalRatingEdited) ? -1 : ((b.TotalRatingEdited > a.TotalRatingEdited) ? 1 : 0));
 
           this.setState({
             columns:newColumn,
-            guards: updatedg,
-            forwards: updatedf,
+            pguards: updatedpg,
+            sguards: updatedsg,
+            sforwards: updatedsf,
+            pforwards: updatedpf,
             centers: updatedc,
             all: updateda,
           });
@@ -826,8 +848,10 @@ class Home extends Component {
             <h1>Players Ratings</h1>
             <ToggleButtonGroup type="radio" name="options" defaultValue="all" onChange={this.ptog.bind(this)}>
               <ToggleButton value="all" style={{padding: "5px",border: "black 1px solid"}}>All</ToggleButton>
-              <ToggleButton value="guards" style={{padding: "5px", border: "black 1px solid"}}>Guards</ToggleButton>
-              <ToggleButton value="forwards" style={{padding: "5px", border: "black 1px solid"}}>Forwards</ToggleButton>
+              <ToggleButton value="pguards" style={{padding: "5px", border: "black 1px solid"}}>Point Guards</ToggleButton>
+              <ToggleButton value="sguards" style={{padding: "5px", border: "black 1px solid"}}>Shooting Guards</ToggleButton>
+              <ToggleButton value="sforwards" style={{padding: "5px", border: "black 1px solid"}}>Small Forwards</ToggleButton>
+              <ToggleButton value="pforwards" style={{padding: "5px", border: "black 1px solid"}}>Power Forwards</ToggleButton>
               <ToggleButton value="centers" style={{padding: "5px", border: "black 1px solid"}}>Centers</ToggleButton>
             </ToggleButtonGroup>
             <br/>
@@ -864,14 +888,14 @@ class Home extends Component {
                   :<h5>loading or no compiled data</h5>
                 }
             </div>
-            <div className={this.state.pos !== "guards" ? 'hidden' : ''}>
-                <h3>Guards Relative Ratings</h3>
-                {this.state.guards ?
+            <div className={this.state.pos !== "pguards" ? 'hidden' : ''}>
+                <h3>Point Guards Relative Ratings</h3>
+                {this.state.pguards ?
                   <BootstrapTable 
                   striped
                   hover
                   keyField='id' 
-                  data={ this.state.guards } 
+                  data={ this.state.pguards } 
                   columns={ this.state.columns }
                   pagination={ paginationFactory() }
                   filter={ filterFactory() }
@@ -879,14 +903,43 @@ class Home extends Component {
                   :<h5>loading or no compiled data. </h5>
                 }
             </div>
-            <div className={this.state.pos !== "forwards" ? 'hidden' : ''}>
-                <h3>Forwards Relative Ratings</h3>
-                {this.state.forwards ?
+            <div className={this.state.pos !== "sguards" ? 'hidden' : ''}>
+                <h3>Guards Relative Ratings</h3>
+                {this.state.sguards ?
                   <BootstrapTable 
                   striped
                   hover
                   keyField='id' 
-                  data={ this.state.forwards } 
+                  data={ this.state.sguards } 
+                  columns={ this.state.columns }
+                  pagination={ paginationFactory() }
+                  filter={ filterFactory() }
+                  />
+                  :<h5>loading or no compiled data. </h5>
+                }
+            </div>
+            <div className={this.state.pos !== "sforwards" ? 'hidden' : ''}>
+                <h3>Forwards Relative Ratings</h3>
+                {this.state.sforwards ?
+                  <BootstrapTable 
+                  striped
+                  hover
+                  keyField='id' 
+                  data={ this.state.sforwards } 
+                  columns={ this.state.columns }
+                  pagination={ paginationFactory() }
+                  filter={ filterFactory() }/>
+                  :<h5>loading or no compiled data</h5>
+                }
+            </div>
+            <div className={this.state.pos !== "pforwards" ? 'hidden' : ''}>
+                <h3>Forwards Relative Ratings</h3>
+                {this.state.pforwards ?
+                  <BootstrapTable 
+                  striped
+                  hover
+                  keyField='id' 
+                  data={ this.state.pforwards } 
                   columns={ this.state.columns }
                   pagination={ paginationFactory() }
                   filter={ filterFactory() }/>
@@ -918,8 +971,10 @@ class Home extends Component {
 
 const mapStateToProps = state => {
   return {
-    gratings: state.comp.ratings.guards,
-    fratings: state.comp.ratings.forwards,
+    pgratings: state.comp.ratings.pguards,
+    sgratings: state.comp.ratings.sguards,
+    sfratings: state.comp.ratings.sforwards,
+    pfratings: state.comp.ratings.pforwards,
     cratings: state.comp.ratings.centers,
     aratings: state.comp.ratings.all,
     teams: state.comp.teams,

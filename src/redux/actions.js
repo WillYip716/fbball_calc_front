@@ -6,7 +6,8 @@ import axios from "axios";
 export const compile = (info) => dispatch => {
     console.log("compile called");
     dispatch({type: LOADING});
-    axios.post('https://fantasybballcalculator.herokuapp.com/api/compile',info) 
+    //axios.post('https://fantasybballcalculator.herokuapp.com/api/compile',info) http://127.0.0.1:8000/api/compile
+    axios.post('http://127.0.0.1:8000/api/compile',info)
      .then(res => {
         dispatch({
            type: COMPILE,

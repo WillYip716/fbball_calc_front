@@ -26,16 +26,17 @@ function LeagueCompiler(){
         let outarr = [];
         let cleanedtext =  textarea.replace(/\n\s*\n/g, '\n');
         arr = cleanedtext.split("Pos");
-        let rePlayers = new RegExp("(?<=\\n)([a-zA-Z .'-]*)(?=[ ](Atl|Bkn|Bos|Cha|Chi|Cle|Dal|Den|Det|GS|Hou|Ind|LAC|LAL|Mem|Mia|Mil|Min|NO|NY|OKC|Orl|Phi|Pho|Por|SA|Sac|Tor|Uta|Was))","g");
+        let rePlayers = new RegExp("(?<=\\n)([a-zA-Z .'-]*)(?=[ ](ATL|BKN|BOS|CHA|CHI|CLE|DAL|DEN|DET|GSW|HOU|IND|LAC|LAL|MEM|MIA|MIL|MIN|NOP|NYK|OKC|ORL|PHI|PHX|POR|SAS|SAC|TOR|UTA|WAS))","g");
         let ter = false;
 
-        
+        console.log(arr);
+
         if(arr.length){
             for(let i = 1; i < arr.length; i++){      
                 let teamnamearr = arr[i-1].split("\n");  
                 if(arr[i].match(rePlayers) && teamnamearr[teamnamearr.length - 2]){
                     outarr.push({
-                        'teamName': teamnamearr[teamnamearr.length - 2],
+                        'teamName': teamnamearr[teamnamearr.length - 2].split(" ").slice(0, -1).join(' '),
                         'players': arr[i].match(rePlayers)
                     });
                 }

@@ -28,7 +28,7 @@ class Trade extends Component {
         sort: true
       },
       {
-        dataField: 'PosStr',
+        dataField: 'Pos',
         text: 'Pos.',
         sort: true
       },
@@ -115,7 +115,7 @@ class Trade extends Component {
         sort: true
       },
       {
-        dataField: 'PosStr',
+        dataField: 'Pos',
         text: 'Pos.',
         sort: true
       },
@@ -639,8 +639,10 @@ class Trade extends Component {
 
 const mapStateToProps = state => {
     return {
-      gratings: state.comp.ratings.guards,
-      fratings: state.comp.ratings.forwards,
+      pgratings: state.comp.ratings.pguards,
+      sgratings: state.comp.ratings.sguards,
+      sfratings: state.comp.ratings.sforwards,
+      pfratings: state.comp.ratings.pforwards,
       cratings: state.comp.ratings.centers,
       aratings: state.comp.ratings.all,
       teams: state.comp.teams,

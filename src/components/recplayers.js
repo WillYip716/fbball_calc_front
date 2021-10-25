@@ -38,7 +38,7 @@ function RecPlayers(props){
           sort: true,
         },
         {
-          dataField: 'PosStr',
+          dataField: 'Pos',
           text: 'Pos.',
           sort: true
         },
@@ -220,7 +220,7 @@ function RecPlayers(props){
         sort: true,
       },
       {
-        dataField: 'PosStr',
+        dataField: 'Pos',
         text: 'Pos.',
         sort: true
       },
