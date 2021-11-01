@@ -7,7 +7,7 @@ import storage from 'redux-persist/lib/storage' // defaults to localStorage for 
 const middleware = [thunk];
 
 const persistConfig = { // configuration object for redux-persist
-   key: 'root',
+   key: 'rootv2',
    storage, // define which storage to use
 }
 const persistedReducer = persistReducer(persistConfig, rootReducer)

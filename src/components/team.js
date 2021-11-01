@@ -164,7 +164,7 @@ class Team extends Component {
           sort: true
         },
         {
-          dataField: 'PosStr',
+          dataField: 'Pos',
           text: 'Pos.',
           sort: true
         },
@@ -240,7 +240,7 @@ class Team extends Component {
           sort: true
         },
         {
-          dataField: 'PosStr',
+          dataField: 'Pos',
           text: 'Pos.',
           sort: true
         },
